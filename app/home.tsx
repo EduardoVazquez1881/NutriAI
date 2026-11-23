@@ -10,7 +10,8 @@ import FloatingNav from '../components/FloatingNav';
 
 
 
-const genAI = new GoogleGenerativeAI("AIzaSyBFGseKPIVCUDZYznOTX3VqyDXGqiakT4o");
+const GEMINI_API_KEY = process.env.EXPO_PUBLIC_GEMINI_API_KEY || "";
+const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
 
 export default function App() {
   const router = useRouter();
@@ -39,6 +40,9 @@ export default function App() {
   }
 
   const consulta = async(imagen: any) => {
+    if (!GEMINI_API_KEY) {
+      throw new Error("Falta configurar EXPO_PUBLIC_GEMINI_API_KEY en el archivo .env");
+    }
     const model = genAI.getGenerativeModel({model: "gemini-2.5-flash"});
     const promt = DetallesIngredientes();
 
@@ -51,9 +55,10 @@ export default function App() {
       },
     ]);
 
-    const text = resultado.response.text();
-    const converirJson = JSON.parse(text);
-    console.log("Respuesta de gemini: " + text);
+    const rawText = resultado.response.text().trim();
+    const cleanText = rawText.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
+    const converirJson = JSON.parse(cleanText);
+    console.log("Respuesta de gemini: " + cleanText);
     return converirJson;
 
   }
