@@ -1,6 +1,6 @@
-# NutriAI — Asistente de Nutrición con Visión Multimodal (Gemini 2.5 Flash)
+# NutriAI — Asistente de Nutrición con Visión Multimodal 
 
-Aplicación móvil multiplataforma (**iOS, Android y Web**) desarrollada con **React Native, Expo Router, TypeScript y Google Gemini 2.5 Flash** que calcula metas calóricas personalizadas mediante la ecuación de **Mifflin-St Jeor** y analiza fotografías de platillos para detectar ingredientes visibles y estimar porciones en formato **JSON estructurado**.
+Aplicación móvil multiplataforma (**iOS, Android y Web**) desarrollada con **React Native, Expo Router, TypeScript y Google Gemini** que calcula metas calóricas personalizadas mediante la ecuación de **Mifflin-St Jeor** y analiza fotografías de platillos para detectar ingredientes visibles y estimar porciones en formato **JSON estructurado**.
 
 ---
 
